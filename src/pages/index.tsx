@@ -1,5 +1,1 @@
-export const Index = () => {
-  const title = 'hello!';
-
-  return <div>{title}</div>;
-};
+export const Index = () => <div>Top Page</div>;
