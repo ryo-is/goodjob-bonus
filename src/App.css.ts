@@ -4,8 +4,8 @@ import { vars } from './vars.css';
 
 export const container = style({
   minHeight: '100vh',
-  backgroundColor: vars.color.dark,
-  color: vars.color.light,
+  backgroundColor: vars.color.light,
+  color: vars.color.dark,
   display: 'grid',
   gridTemplateColumns: '320px 1fr',
 });
