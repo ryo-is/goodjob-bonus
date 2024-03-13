@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { container, main } from './App.css';
-import { Menu } from './components/header/Menu';
+import { Header } from './components/header/Header';
+import { Menu } from './components/menu/Menu';
 import { Toast } from './components/toast/Toast';
 import { Index } from './pages';
 
@@ -13,11 +14,14 @@ const router = createBrowserRouter([
 ]);
 
 export const App = () => (
-  <div className={container}>
-    <Menu />
-    <div className={main}>
-      <RouterProvider router={router} />
-      <Toast />
+  <>
+    <Header />
+    <div className={container}>
+      <Menu />
+      <div className={main}>
+        <RouterProvider router={router} />
+        <Toast />
+      </div>
     </div>
-  </div>
+  </>
 );

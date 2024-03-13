@@ -3,9 +3,11 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/vars.css';
 
 export const container = style({
-  backgroundColor: vars.color.dark,
+  backgroundColor: '#0284c7',
   color: vars.color.light,
-  padding: '2rem',
+  height: '64px',
+  lineHeight: '64px',
+  padding: '0 2rem',
 });
 
 export const title = style({
