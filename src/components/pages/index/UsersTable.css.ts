@@ -19,7 +19,6 @@ export const tableHeader = style({
 export const tableBody = style({
   ...tableRow,
 
-  padding: '18px 12px',
-
   borderBottom: `1px solid ${vars.color.gray}`,
+  padding: '18px 12px',
 });

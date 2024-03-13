@@ -29,8 +29,8 @@ export const UsersTable = () => (
     {users.map((u) => (
       <div key={u.id} className={tableBody}>
         <div>{u.name}</div>
-        <div>{u.goodjob.count}</div>
-        <div>{u.goodjob.point}</div>
+        <div>👍 x {u.goodjob.count}</div>
+        <div>💰 x {u.goodjob.point}</div>
       </div>
     ))}
   </div>

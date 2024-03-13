@@ -3,10 +3,10 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/vars.css';
 
 export const container = style({
-  backgroundColor: '#0284c7',
+  backgroundColor: '#52525b',
   color: vars.color.light,
-  height: '64px',
-  lineHeight: '64px',
+  height: '72px',
+  lineHeight: '72px',
   padding: '0 2rem',
 });
 
