@@ -3,7 +3,7 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/vars.css';
 
 export const container = style({
-  backgroundColor: '#52525b',
+  backgroundColor: '#27272a',
   color: vars.color.light,
   height: '72px',
   lineHeight: '72px',
