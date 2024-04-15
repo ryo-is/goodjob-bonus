@@ -1,27 +1,14 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { container, main } from './App.css';
-import { Header } from './components/header/Header';
-import { Menu } from './components/menu/Menu';
-import { Toast } from './components/toast/Toast';
+import { Layout } from './components/layout/Layout';
 import { Index } from './pages';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Index />,
-  },
-]);
-
 export const App = () => (
-  <>
-    <Header />
-    <div className={container}>
-      <Menu />
-      <div className={main}>
-        <RouterProvider router={router} />
-        <Toast />
-      </div>
-    </div>
-  </>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Index />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
 );
