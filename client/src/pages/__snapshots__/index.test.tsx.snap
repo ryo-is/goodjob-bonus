@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Top > should match to the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <div
+        class="UsersTable_tableHeader__102clk90"
+      >
+        <div>
+          Name
+        </div>
+        <div>
+          Goodjob Count
+        </div>
+        <div>
+          Goodjob Point
+        </div>
+      </div>
+      <div
+        class="UsersTable_tableBody__102clk91"
+      >
+        <div>
+          田中 太郎
+        </div>
+        <div>
+          👍 x 10
+        </div>
+        <div>
+          💰 x 20
+        </div>
+      </div>
+      <div
+        class="UsersTable_tableBody__102clk91"
+      >
+        <div>
+          山田花子
+        </div>
+        <div>
+          👍 x 10
+        </div>
+        <div>
+          💰 x 20
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
