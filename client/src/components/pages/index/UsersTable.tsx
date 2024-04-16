@@ -1,25 +1,12 @@
 import { tableBody, tableHeader } from './UsersTable.css';
 
-const users = [
-  {
-    id: '1',
-    name: '田中 太郎',
-    goodjob: {
-      count: 10,
-      point: 20,
-    },
-  },
-  {
-    id: '2',
-    name: '山田花子',
-    goodjob: {
-      count: 10,
-      point: 20,
-    },
-  },
-];
+import { RouterOutputs } from '@/utils/trpc';
 
-export const UsersTable = () => (
+type UsersTableProps = {
+  users: RouterOutputs['userList'];
+};
+
+export const UsersTable = ({ users }: UsersTableProps) => (
   <div>
     <div className={tableHeader}>
       <div>Name</div>
