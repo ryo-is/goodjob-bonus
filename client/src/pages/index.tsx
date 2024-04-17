@@ -17,7 +17,7 @@ export const Index = () => {
     <div>
       <UsersTable users={userList.data ?? []} />
       <div>
-        <button className={button} onClick={onClick}>
+        <button type="button" className={button} onClick={onClick}>
           POST
         </button>
       </div>

@@ -5,7 +5,8 @@ import { vars } from '@/vars.css';
 export const button = style({
   backgroundColor: `${vars.color.secondary} !important`,
   color: vars.color.dark,
-  padding: '6px 24px',
+  padding: '8px 24px',
+  border: `1px solid ${vars.color.dark}`,
   borderRadius: '6px',
   width: 'fit-content',
   fontSize: '1rem',

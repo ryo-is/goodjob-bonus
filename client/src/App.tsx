@@ -7,6 +7,8 @@ import { Layout } from './components/layout/Layout';
 import { Index } from './pages';
 import { trpc } from './utils/trpc';
 
+import './global.css';
+
 export const App = () => {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
