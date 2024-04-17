@@ -14,11 +14,16 @@ const appRouter = router({
       { id: '000002', name: '山田花子', goodjob: { count: 12, point: 32 } },
     ];
   }),
-  userById: publicProcedure.input(z.string()).query((opt) => {
+  userById: publicProcedure.input(z.object({ id: z.string() })).query((opt) => {
     console.log(opt);
 
     return { id: '000002', name: '山田花子', count: 12, point: 32 };
   }),
+  sendBonus: publicProcedure
+    .input(z.object({ id: z.string(), point: z.number() }))
+    .mutation((opt) => {
+      console.log(opt);
+    }),
 });
 
 export type AppRouter = typeof appRouter;
