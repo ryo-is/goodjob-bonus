@@ -12,6 +12,9 @@ export const title = style({
   fontWeight: 'bold',
   fontSize: '1.25rem',
   lineHeight: '64px',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
 });
 
 export const menuItemContainer = style({
