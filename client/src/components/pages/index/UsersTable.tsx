@@ -1,5 +1,9 @@
-import { tableBody, tableHeader } from './UsersTable.css';
+import {
+  HandThumbUpIcon,
+  CurrencyDollarIcon,
+} from '@heroicons/react/24/outline';
 
+import { icon, tableBody, tableHeader, countCell } from './UsersTable.css';
 import { RouterOutputs } from '@/utils/trpc';
 
 type UsersTableProps = {
@@ -16,8 +20,12 @@ export const UsersTable = ({ users }: UsersTableProps) => (
     {users.map((u) => (
       <div key={u.id} className={tableBody}>
         <div>{u.name}</div>
-        <div>👍 x {u.goodjob.count}</div>
-        <div>💰 x {u.goodjob.point}</div>
+        <div className={countCell}>
+          <HandThumbUpIcon className={icon} /> x {u.goodjob.count}
+        </div>
+        <div className={countCell}>
+          <CurrencyDollarIcon className={icon} /> x {u.goodjob.point}
+        </div>
       </div>
     ))}
   </div>

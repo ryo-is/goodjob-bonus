@@ -22,3 +22,14 @@ export const tableBody = style({
   borderBottom: `1px solid ${vars.color.gray}`,
   padding: '18px 12px',
 });
+
+export const countCell = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
+});
+
+export const icon = style({
+  width: '24px',
+  height: '24px',
+});
