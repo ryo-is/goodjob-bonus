@@ -20,5 +20,13 @@ export const menuItemContainer = style({
 
 export const menuItem = style({
   textDecoration: 'none',
-  color: 'inherit',
+  color: vars.color.primary,
+  display: 'inline-block',
+  width: '100%',
+  lineHeight: '54px',
+  fontSize: '1.125rem',
+
+  ':hover': {
+    color: 'inherit',
+  },
 });
