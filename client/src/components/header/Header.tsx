@@ -1,7 +1,3 @@
-import { container, title } from './Header.css';
+import { container } from './Header.css';
 
-export const Header = () => (
-  <div className={container}>
-    <div className={title}>👍 Goodjob Bonus 💰</div>
-  </div>
-);
+export const Header = () => <div className={container}></div>;

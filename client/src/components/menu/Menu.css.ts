@@ -3,18 +3,20 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/vars.css';
 
 export const container = style({
-  backgroundColor: '#d4d4d8',
-  color: vars.color.dark,
-  padding: '2rem',
-  borderRight: '1px solid #d4d4d8',
+  backgroundColor: '#333333',
+  color: vars.color.light,
+  padding: '0 2rem',
 });
 
 export const title = style({
   fontWeight: 'bold',
   fontSize: '1.25rem',
+  lineHeight: '64px',
 });
 
-export const menuItemContainer = style({});
+export const menuItemContainer = style({
+  marginTop: '36px',
+});
 
 export const menuItem = style({
   textDecoration: 'none',

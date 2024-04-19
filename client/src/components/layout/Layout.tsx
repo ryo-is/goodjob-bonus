@@ -7,12 +7,14 @@ import { Toast } from '../toast/Toast';
 
 export const Layout = () => (
   <>
-    <Header />
     <div className={container}>
       <Menu />
-      <div className={main}>
-        <Outlet />
-        <Toast />
+      <div>
+        <Header />
+        <div className={main}>
+          <Outlet />
+          <Toast />
+        </div>
       </div>
     </div>
   </>
