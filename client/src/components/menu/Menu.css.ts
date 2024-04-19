@@ -21,12 +21,19 @@ export const menuItemContainer = style({
 export const menuItem = style({
   textDecoration: 'none',
   color: vars.color.primary,
-  display: 'inline-block',
   width: '100%',
-  lineHeight: '54px',
+  lineHeight: '64px',
   fontSize: '1.125rem',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
 
   ':hover': {
     color: 'inherit',
   },
+});
+
+export const icon = style({
+  width: '28px',
+  height: '28px',
 });
