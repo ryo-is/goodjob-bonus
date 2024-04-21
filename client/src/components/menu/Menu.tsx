@@ -5,7 +5,10 @@ import {
   menuItemContainer,
   title,
 } from './Menu.css';
-import { PaperAirplaneIcon, ClipboardIcon } from '@heroicons/react/24/outline';
+import {
+  PaperAirplaneIcon,
+  ChartBarSquareIcon,
+} from '@heroicons/react/24/outline';
 import { HandThumbUpIcon } from '@heroicons/react/24/solid';
 
 export const Menu = () => (
@@ -16,7 +19,7 @@ export const Menu = () => (
     </div>
     <div className={menuItemContainer}>
       <a href="/" className={menuItem}>
-        <ClipboardIcon className={icon} />
+        <ChartBarSquareIcon className={icon} />
         Dashboard
       </a>
       <a href="/" className={menuItem}>
