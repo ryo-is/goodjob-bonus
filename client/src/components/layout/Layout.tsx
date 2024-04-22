@@ -5,15 +5,13 @@ import { Header } from '../header/Header';
 import { Menu } from '../menu/Menu';
 
 export const Layout = () => (
-  <>
-    <div className={container}>
-      <Menu />
-      <div>
-        <Header />
-        <div className={main}>
-          <Outlet />
-        </div>
+  <div className={container}>
+    <Menu />
+    <div>
+      <Header />
+      <div className={main}>
+        <Outlet />
       </div>
     </div>
-  </>
+  </div>
 );

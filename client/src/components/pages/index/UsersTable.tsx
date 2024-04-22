@@ -4,6 +4,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { icon, tableBody, tableHeader, countCell } from './UsersTable.css';
+
 import { RouterOutputs } from '@/utils/trpc';
 
 type UsersTableProps = {

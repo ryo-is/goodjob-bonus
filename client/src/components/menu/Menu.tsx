@@ -1,15 +1,16 @@
 import {
+  PaperAirplaneIcon,
+  ChartBarSquareIcon,
+} from '@heroicons/react/24/outline';
+import { HandThumbUpIcon } from '@heroicons/react/24/solid';
+
+import {
   container,
   icon,
   menuItem,
   menuItemContainer,
   title,
 } from './Menu.css';
-import {
-  PaperAirplaneIcon,
-  ChartBarSquareIcon,
-} from '@heroicons/react/24/outline';
-import { HandThumbUpIcon } from '@heroicons/react/24/solid';
 
 export const Menu = () => (
   <div className={container}>
