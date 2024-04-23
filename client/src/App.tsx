@@ -15,7 +15,10 @@ export const App = () => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: 'http://localhost:3001',
+          url: 'http://localhost:3001/trpc',
+          headers: {
+            authorization: 'Bearer token',
+          },
         }),
       ],
     }),

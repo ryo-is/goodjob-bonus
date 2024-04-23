@@ -1,34 +1,23 @@
-import { createHTTPServer } from '@trpc/server/adapters/standalone';
-import { z } from 'zod';
+import * as trpcExpress from '@trpc/server/adapters/express';
 import cors from 'cors';
+import express from 'express';
 
-import { router, publicProcedure } from './trpc';
-
-const appRouter = router({
-  health: publicProcedure.query(() => {
-    return 'alive';
-  }),
-  userList: publicProcedure.query(() => {
-    return [
-      { id: '000001', name: '田中太郎', goodjob: { count: 0, point: 0 } },
-      { id: '000002', name: '山田花子', goodjob: { count: 12, point: 32 } },
-    ];
-  }),
-  userById: publicProcedure.input(z.object({ id: z.string() })).query((opt) => {
-    console.log(opt);
-
-    return { id: '000002', name: '山田花子', count: 12, point: 32 };
-  }),
-  sendBonus: publicProcedure
-    .input(z.object({ id: z.string(), point: z.number() }))
-    .mutation((opt) => {
-      console.log(opt);
-    }),
-});
+import { appRouter } from './appRouter';
+import { createContext } from './context';
 
 export type AppRouter = typeof appRouter;
 
-const server = createHTTPServer({ router: appRouter, middleware: cors() });
+const app = express();
 
-server.listen(3001);
+app.use(cors());
+
+app.use(
+  '/trpc',
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+    createContext,
+  }),
+);
+
+app.listen(3001);
 console.log('The server is up on port 3001.');
