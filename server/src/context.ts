@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server';
 import * as trpcExpress from '@trpc/server/adapters/express';
 
-export async function createContext({
+export function createContext({
   req,
   res,
 }: trpcExpress.CreateExpressContextOptions) {

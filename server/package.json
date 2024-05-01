@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx ts-node src/index.ts"
+    "dev": "npx ts-node src/index.ts",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs 'src/**/*.ts'",
+    "fix": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs 'src/**/*.ts' --fix"
   },
   "author": "",
   "license": "ISC",

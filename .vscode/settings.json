@@ -23,6 +23,7 @@
   },
   "eslint.format.enable": true,
   "eslint.workingDirectories": [
-    "client"
+    "client",
+    "server"
   ]
 }
