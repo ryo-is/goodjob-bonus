@@ -48,9 +48,6 @@ export default [
     languageOptions: {
       parser: TypeScriptESLintParser,
       parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
         ecmaVersion: 12,
         sourceType: 'module',
         tsconfigRootDir: __dirname,
@@ -109,13 +106,10 @@ export default [
         'error',
         {
           js: 'never',
-          jsx: 'never',
           ts: 'never',
-          tsx: 'never',
         },
       ],
       'import/no-extraneous-dependencies': 0,
-      'jsx-a11y/control-has-associated-label': 'off',
       'implicit-arrow-linebreak': 'off',
       'function-paren-newline': 'off',
       '@typescript-eslint/indent': 'off',
@@ -128,7 +122,7 @@ export default [
       'import/resolver': {
         node: {
           paths: ['src'],
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          extensions: ['.js', '.ts'],
         },
       },
     },
