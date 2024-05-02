@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  mahjong-portal-db:
+    image: mysql:8.0.28
+    platform: linux/x86_64
+    container_name: mahjong-portal-db
+    environment:
+      MYSQL_ROOT_PASSWORD: "dev@mysql"
+      MYSQL_DATABASE: mahjong_portal
+      TZ: "Asia/Tokyo"
+    ports:
+      - "3336:3306"
+    volumes:
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+volumes:
+  mahjong-portal-db:
