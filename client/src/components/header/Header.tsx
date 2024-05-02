@@ -1,9 +1,7 @@
-import { UserCircleIcon } from '@heroicons/react/20/solid';
-
-import { container, icon } from './Header.css';
+import { container } from './Header.css';
 
 export const Header = () => (
   <div className={container}>
-    <UserCircleIcon className={icon} />
+    <div>Season 1</div>
   </div>
 );
