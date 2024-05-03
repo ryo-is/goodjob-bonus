@@ -28,7 +28,7 @@ model Season {
 model Result {
   id       Int    @id @default(autoincrement())
   rank     Int
-  ponit    Int
+  point    Int
   userId   Int
   user     User   @relation(fields: [userId], references: [id])
   seasonId Int

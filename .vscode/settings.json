@@ -24,6 +24,7 @@
   "eslint.format.enable": true,
   "eslint.workingDirectories": [
     "client",
-    "server"
+    "server",
+    "db"
   ]
 }
