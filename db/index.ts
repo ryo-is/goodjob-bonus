@@ -29,13 +29,33 @@ const main = async () => {
   // console.log(seasons);
   //
   // create result
-  // const res = await prisma.result.create({
-  //   data: {
-  //     point: 60,
-  //     rank: 1,
-  //     userId: 1,
-  //     seasonId: 1,
-  //   },
+  // const res = await prisma.result.createMany({
+  //   data: [
+  //     {
+  //       point: 60,
+  //       rank: 1,
+  //       userId: 1,
+  //       seasonId: 1,
+  //     },
+  //     {
+  //       point: 20,
+  //       rank: 2,
+  //       userId: 2,
+  //       seasonId: 1,
+  //     },
+  //     {
+  //       point: -30,
+  //       rank: 3,
+  //       userId: 3,
+  //       seasonId: 1,
+  //     },
+  //     {
+  //       point: -50,
+  //       rank: 4,
+  //       userId: 4,
+  //       seasonId: 1,
+  //     },
+  //   ],
   // });
   // console.log(res);
   //
