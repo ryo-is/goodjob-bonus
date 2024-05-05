@@ -12,5 +12,6 @@ services:
       - "3336:3306"
     volumes:
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - mahjong-portal-db:/var/lib/mysql
 volumes:
   mahjong-portal-db:
