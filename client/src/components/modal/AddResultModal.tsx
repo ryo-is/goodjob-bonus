@@ -21,6 +21,7 @@ import { useModalIsOpen } from '@/store/modal';
 import { trpc } from '@/utils/trpc';
 
 export const AddResultModal = () => {
+  const [selectedSeasonId, setSelectedSeasonId] = useState<number>();
   const [selectedUserId, setSelectedUserId] = useState<number>();
   const [rank, setRank] = useState(0);
   const [point, setPoint] = useState(0);
@@ -28,9 +29,10 @@ export const AddResultModal = () => {
   const { isOpen, setIsOpen } = useModalIsOpen();
 
   const users = trpc.users.useQuery();
+  const seasons = trpc.seasons.useQuery();
 
   const onCreate = () => {
-    console.log(selectedUserId, rank, point);
+    console.log(selectedSeasonId, selectedUserId, rank, point);
   };
 
   if (!isOpen) return <div className={hiddenContaier} />;
@@ -40,6 +42,21 @@ export const AddResultModal = () => {
       <div className={modal}>
         <div className={modalTitle}>Add Result</div>
         <div className={inputArea}>
+          <div className={inputRow}>
+            <div>seasons</div>
+            <select
+              className={select}
+              onChange={(e) => setSelectedSeasonId(Number(e.target.value))}
+            >
+              <option>Select Season</option>
+              {seasons.data &&
+                seasons.data.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+            </select>
+          </div>
           <div className={inputRow}>
             <div>user</div>
             <select

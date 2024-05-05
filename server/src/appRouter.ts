@@ -11,6 +11,10 @@ export const appRouter = router({
     const users = await prisma.user.findMany();
     return users;
   }),
+  seasons: publicProcedure.query(async () => {
+    const seasons = await prisma.season.findMany();
+    return seasons;
+  }),
   results: publicProcedure
     .input(z.object({ seasonId: z.string() }))
     .query(async (opt) => {
