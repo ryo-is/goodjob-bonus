@@ -1,21 +1,21 @@
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
 
-import { router, publicProcedure } from './trpc';
+import { router, publicProcedure, authProcedure } from './trpc';
 
 const prisma = new PrismaClient();
 
 export const appRouter = router({
   health: publicProcedure.query(() => 'alive'),
-  users: publicProcedure.query(async () => {
+  users: authProcedure.query(async () => {
     const users = await prisma.user.findMany();
     return users;
   }),
-  seasons: publicProcedure.query(async () => {
+  seasons: authProcedure.query(async () => {
     const seasons = await prisma.season.findMany();
     return seasons;
   }),
-  results: publicProcedure
+  results: authProcedure
     .input(z.object({ seasonId: z.string() }))
     .query(async (opt) => {
       const results = await prisma.result.findMany({
@@ -26,7 +26,7 @@ export const appRouter = router({
 
       return results;
     }),
-  resultSummary: publicProcedure
+  resultSummary: authProcedure
     .input(z.object({ seasonId: z.string() }))
     .query(async (opt) => {
       const users = await prisma.user.findMany();
