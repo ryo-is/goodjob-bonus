@@ -8,7 +8,7 @@ export const vars = createGlobalTheme(':root', {
     grayDark: '#374151',
     primary: '#d4d4d8',
     secondary: '#f4f4f5',
-    buttonBgColor: '#0284c7',
-    buttonBgColorActive: '#075985',
+    buttonBgColor: '#333333',
+    buttonBgColorActive: '#525252',
   },
 });
