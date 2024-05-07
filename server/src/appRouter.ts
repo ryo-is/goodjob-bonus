@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 
 import { router, publicProcedure, authProcedure } from './trpc';
@@ -55,5 +56,36 @@ export const appRouter = router({
       });
 
       return Object.fromEntries(res);
+    }),
+  addResult: authProcedure
+    .input(
+      z.object({
+        userId: z.number(),
+        seasonId: z.number(),
+        rank: z.number(),
+        point: z.number(),
+      }),
+    )
+    .mutation(async (opt) => {
+      const { userId, seasonId, rank, point } = opt.input;
+      try {
+        await prisma.result.create({
+          data: {
+            userId,
+            seasonId,
+            rank,
+            point,
+          },
+        });
+        return {
+          message: 'ok',
+        };
+      } catch (e) {
+        throw new TRPCError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'Faild add result',
+          cause: e,
+        });
+      }
     }),
 });

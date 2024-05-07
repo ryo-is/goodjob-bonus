@@ -30,9 +30,19 @@ export const AddResultModal = () => {
 
   const users = trpc.users.useQuery();
   const seasons = trpc.seasons.useQuery();
+  const addResult = trpc.addResult.useMutation();
 
   const onCreate = () => {
-    console.log(selectedSeasonId, selectedUserId, rank, point);
+    if (!selectedSeasonId || !selectedUserId) {
+      return;
+    }
+
+    addResult.mutate({
+      seasonId: selectedSeasonId,
+      userId: selectedUserId,
+      rank,
+      point,
+    });
   };
 
   if (!isOpen) return <div className={hiddenContaier} />;
