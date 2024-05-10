@@ -6,7 +6,6 @@ export const container = style({
   marginBottom: '32px',
   border: '2px solid #333333',
   borderRadius: '8px',
-  fontSize: '0.875rem',
 });
 
 export const summary = style({
