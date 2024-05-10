@@ -8,6 +8,28 @@ const prisma = new PrismaClient();
 
 export const appRouter = router({
   health: publicProcedure.query(() => 'alive'),
+  errorQuery: publicProcedure.query(() => {
+    const isError = true;
+
+    if (isError) {
+      throw new TRPCError({
+        message: 'error',
+        code: 'BAD_REQUEST',
+      });
+    }
+
+    return { message: 'ok' };
+  }),
+  errorMutatation: publicProcedure.mutation(() => {
+    const isError = true;
+
+    if (isError) {
+      throw new TRPCError({
+        message: 'error',
+        code: 'BAD_REQUEST',
+      });
+    }
+  }),
   users: authProcedure.query(async () => {
     const users = await prisma.user.findMany();
     return users;
