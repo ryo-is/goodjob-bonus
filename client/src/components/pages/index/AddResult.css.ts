@@ -2,6 +2,10 @@ import { ComplexStyleRule, style } from '@vanilla-extract/css';
 
 import { vars } from '@/vars.css';
 
+export const hiddenContent = style({
+  display: 'none',
+});
+
 export const container = style({
   marginBottom: '32px',
   border: '2px solid #333333',
@@ -23,14 +27,14 @@ export const contents = style({
 
 export const inputArea = style({
   display: 'grid',
-  gridTemplateRows: 'repeat(2, auto)',
-  gridAutoFlow: 'column',
+  gridTemplateColumns: '120px 1fr 1fr 1fr 1fr',
   gridGap: '16px',
 });
 
 export const inputRow = style({
   display: 'grid',
-  gridTemplateColumns: '120px 280px',
+  gridGap: '12px',
+  gridTemplateRows: '40px 40px 40px',
   alignItems: 'center',
 });
 

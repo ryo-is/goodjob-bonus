@@ -4,46 +4,69 @@ import {
   container,
   contents,
   summary,
-  inputArea,
-  inputRow,
-  select,
-  input,
   actionArea,
   createButton,
+  hiddenContent,
+  inputArea,
+  input,
+  inputRow,
 } from './AddResult.css';
 
-import { trpc } from '@/utils/trpc';
+import { useSeasonId } from '@/hooks/useSeasonId';
+import { trpc, RouterInputs } from '@/utils/trpc';
 
 type Props = {
   refetch: () => Promise<void>;
 };
 
 export const AddResult = ({ refetch }: Props) => {
-  const [selectedSeasonId, setSelectedSeasonId] = useState<number>();
-  const [selectedUserId, setSelectedUserId] = useState<number>();
-  const [rank, setRank] = useState(0);
-  const [point, setPoint] = useState(0);
+  const { seasonId } = useSeasonId();
+
+  const [rankMap, setRankMap] = useState(new Map<number, number>());
+  const [pointMAp, setPointMap] = useState(new Map<number, number>());
 
   const users = trpc.users.useQuery();
-  const seasons = trpc.seasons.useQuery();
-  const addResult = trpc.addResult.useMutation({
+  const bulkAddResult = trpc.bulkAddResult.useMutation({
     onSuccess: async () => {
       await refetch();
     },
   });
 
   const onCreate = () => {
-    if (!selectedSeasonId || !selectedUserId) {
+    if (!users.data) {
       return;
     }
 
-    addResult.mutate({
-      seasonId: selectedSeasonId,
-      userId: selectedUserId,
-      rank,
-      point,
+    let totalRank = 0;
+    let totalPoint = 0;
+    const inputs: RouterInputs['bulkAddResult'] = users.data.map((u) => {
+      const rank = rankMap.get(u.id) ?? 0;
+      const point = pointMAp.get(u.id) ?? 0;
+      totalRank += rank;
+      totalPoint += point;
+
+      return {
+        userId: u.id,
+        seasonId: Number(seasonId),
+        rank,
+        point,
+      };
     });
+
+    if (totalRank !== 10) {
+      throw new Error('total rank is not 10');
+    }
+
+    if (totalPoint !== 0) {
+      throw new Error('total point is not 0');
+    }
+
+    bulkAddResult.mutate(inputs);
   };
+
+  if (!users.data) {
+    return <div className={hiddenContent} />;
+  }
 
   return (
     <div className={container}>
@@ -52,53 +75,35 @@ export const AddResult = ({ refetch }: Props) => {
         <div className={contents}>
           <div className={inputArea}>
             <div className={inputRow}>
-              <div>seasons</div>
-              <select
-                className={select}
-                onChange={(e) => setSelectedSeasonId(Number(e.target.value))}
-              >
-                <option>Select Season</option>
-                {seasons.data &&
-                  seasons.data.map((s) => (
-                    <option key={s.id} value={s.id}>
-                      {s.name}
-                    </option>
-                  ))}
-              </select>
-            </div>
-            <div className={inputRow}>
-              <div>user</div>
-              <select
-                className={select}
-                onChange={(e) => setSelectedUserId(Number(e.target.value))}
-              >
-                <option>Select User</option>
-                {users.data &&
-                  users.data.map((u) => (
-                    <option key={u.id} value={u.id}>
-                      {u.name}
-                    </option>
-                  ))}
-              </select>
-            </div>
-            <div className={inputRow}>
+              <div />
               <div>rank</div>
-              <input
-                className={input}
-                type="number"
-                defaultValue={rank}
-                onChange={(e) => setRank(Number(e.target.value))}
-              />
-            </div>
-            <div className={inputRow}>
               <div>point</div>
-              <input
-                className={input}
-                type="number"
-                defaultValue={point}
-                onChange={(e) => setPoint(Number(e.target.value))}
-              />
             </div>
+            {users.data.map((u) => (
+              <div key={u.id} className={inputRow}>
+                <div>{u.name}</div>
+                <div>
+                  <input
+                    className={input}
+                    type="number"
+                    defaultValue={0}
+                    onChange={(e) =>
+                      setRankMap((p) => p.set(u.id, Number(e.target.value)))
+                    }
+                  />
+                </div>
+                <div>
+                  <input
+                    className={input}
+                    type="number"
+                    defaultValue={0}
+                    onChange={(e) =>
+                      setPointMap((p) => p.set(u.id, Number(e.target.value)))
+                    }
+                  />
+                </div>
+              </div>
+            ))}
           </div>
           <div className={actionArea}>
             <button

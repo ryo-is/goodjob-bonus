@@ -72,7 +72,8 @@ export const appRouter = router({
         });
         res.set(u.id, {
           totalPoint,
-          averageRnak: totalRank / filteredResult.length,
+          averageRnak:
+            filteredResult.length === 0 ? 0 : totalRank / filteredResult.length,
           userName: u.name,
         });
       });
@@ -99,6 +100,42 @@ export const appRouter = router({
             point,
           },
         });
+        return {
+          message: 'ok',
+        };
+      } catch (e) {
+        throw new TRPCError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'Faild add result',
+          cause: e,
+        });
+      }
+    }),
+  bulkAddResult: authProcedure
+    .input(
+      z.array(
+        z.object({
+          userId: z.number(),
+          seasonId: z.number(),
+          rank: z.number(),
+          point: z.number(),
+        }),
+      ),
+    )
+    .mutation(async (opt) => {
+      const data = opt.input;
+      try {
+        const promises = data.map((d) =>
+          prisma.result.create({
+            data: {
+              userId: d.userId,
+              seasonId: d.seasonId,
+              rank: d.rank,
+              point: d.point,
+            },
+          }),
+        );
+        await Promise.all(promises);
         return {
           message: 'ok',
         };
